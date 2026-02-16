@@ -17,11 +17,21 @@ namespace MvcNetCoreEFMultiplesBBDD.Controllers
             List<VistaEmpleadoDepartamento> empleados = await this.repo.GetEmpleadosDepartamentoAsync();
             return View(empleados);
         }
-        
+
         public async Task<IActionResult> Details(int idEmp)
         {
             VistaEmpleadoDepartamento empleado = await this.repo.GetDetallesEmpleadosDepartamentoAsync(idEmp);
             return View(empleado);
+        }
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(Empleado emp)
+        {
+            await this.repo.InsertarEmpleadoAsync(emp.Apellido, emp.Oficio, emp.Dir, emp.Salario, emp.Comision, emp.NombreDepartamento);
+            return View();
         }
     }
 }

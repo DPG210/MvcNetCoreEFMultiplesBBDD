@@ -8,5 +8,6 @@ namespace MvcNetCoreEFMultiplesBBDD.Data
         public EmpleadosContext(DbContextOptions<EmpleadosContext>options)
             :base(options) { }
         public DbSet<VistaEmpleadoDepartamento> Empleados { get; set; }
+        public DbSet<Empleado> Emp { get; set; }
     }
 }
